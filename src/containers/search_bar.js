@@ -5,10 +5,13 @@ export default class SearchBar extends Component {
     super(props);
 
     this.state = {term: ''};
+
+    //take existing "onInputChange" method, bind "this"(SearchBar), and replace with "onInputChange" that has correct context.
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
   onInputChange(event){
-    console.log(event.target.value);
+    this.setState({ term: event.target.value });
   }
 
   render(){
